@@ -313,7 +313,7 @@ function Hero() {
               <div className="aspect-[4/5] overflow-hidden rounded-sm bg-[#EFE4D0]">
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
-                  src="https://images.unsplash.com/photo-1558365916-2ca60efde7d6?w=600&q=80"
+                  src="https://images.unsplash.com/photo-1530124566582-a618bc2615dc?w=600&q=80"
                   alt="Team loading"
                   className="w-full h-full object-cover"
                 />
