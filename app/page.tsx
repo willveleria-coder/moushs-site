@@ -222,7 +222,7 @@ function TickerBar() {
   const all = [...items, ...items, ...items];
 
   return (
-    <section className="bg-[#FFD60A] text-[#0B1F3A] py-4 overflow-hidden border-y-4 border-[#0B1F3A]">
+    <section className="bg-[#FFD60A] text-[#0B1F3A] py-4 overflow-hidden border-b-4 border-[#0B1F3A] -mt-px">
       <div className="flex animate-marquee whitespace-nowrap">
         {all.map((t, i) => (
           <div key={i} className="flex items-center gap-3 px-6 sm:px-8">
@@ -502,10 +502,11 @@ function Estimator() {
 
                   <a
                     href={PHONE_LINK}
-                    className="w-full inline-flex items-center justify-center gap-2 bg-[#E63946] text-white py-4 rounded-md font-black uppercase tracking-wide text-sm hover:bg-[#c92a37] transition shadow-lg shadow-[#E63946]/30 min-h-[52px]"
+                    style={{ color: "white" }}
+                    className="w-full inline-flex items-center justify-center gap-2 bg-[#E63946] hover:bg-[#c92a37] py-4 rounded-md font-black uppercase tracking-wide text-sm transition shadow-lg shadow-[#E63946]/30 min-h-[52px]"
                   >
-                    <Phone className="w-4 h-4" />
-                    Call to lock this price
+                    <Phone className="w-4 h-4" style={{ color: "white" }} />
+                    <span style={{ color: "white" }}>Call to lock this price</span>
                   </a>
                 </div>
               </div>
@@ -826,10 +827,11 @@ function Comparison() {
               </p>
               <a
                 href="#estimate"
-                className="inline-flex items-center gap-2 bg-[#0B1F3A] text-white px-5 h-12 rounded-md font-black uppercase tracking-wide text-xs sm:text-sm hover:bg-[#0A0A0A] transition shadow-lg"
+                style={{ color: "white" }}
+                className="inline-flex items-center gap-2 bg-[#0B1F3A] hover:bg-[#0A0A0A] px-5 h-12 rounded-md font-black uppercase tracking-wide text-xs sm:text-sm transition shadow-lg"
               >
-                Get my quote
-                <ArrowRight className="w-4 h-4" />
+                <span style={{ color: "white" }}>Get my quote</span>
+                <ArrowRight className="w-4 h-4" style={{ color: "white" }} />
               </a>
             </div>
           </div>
@@ -951,10 +953,11 @@ function Schedule() {
                   </div>
                   <a
                     href={PHONE_LINK}
-                    className="mt-4 w-full inline-flex items-center justify-center gap-1 bg-[#0B1F3A] text-white py-2.5 rounded-md text-xs font-black uppercase tracking-wide hover:bg-[#E63946] transition"
+                    style={{ color: "white" }}
+                    className="mt-4 w-full inline-flex items-center justify-center gap-1 bg-[#0B1F3A] hover:bg-[#E63946] py-2.5 rounded-md text-xs font-black uppercase tracking-wide transition"
                   >
-                    Lock this date
-                    <ArrowRight className="w-3 h-3" />
+                    <span style={{ color: "white" }}>Lock this date</span>
+                    <ArrowRight className="w-3 h-3" style={{ color: "white" }} />
                   </a>
                 </div>
               </Reveal>
@@ -1375,10 +1378,11 @@ function FinalCta() {
             <div className="flex flex-col sm:flex-row gap-3 mb-10">
               <a
                 href={PHONE_LINK}
-                className="inline-flex items-center justify-center gap-2 bg-[#0B1F3A] text-white px-7 h-16 rounded-md font-black uppercase tracking-wide text-base hover:bg-black transition shadow-2xl"
+                style={{ color: "white" }}
+                className="inline-flex items-center justify-center gap-2 bg-[#0B1F3A] hover:bg-black px-7 h-16 rounded-md font-black uppercase tracking-wide text-base transition shadow-2xl"
               >
-                <Phone className="w-5 h-5" />
-                Call {PHONE}
+                <Phone className="w-5 h-5" style={{ color: "white" }} />
+                <span style={{ color: "white" }}>Call {PHONE}</span>
               </a>
               <a
                 href="#estimate"
