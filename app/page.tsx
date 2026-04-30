@@ -4,11 +4,12 @@ import { useState, useEffect, useMemo, useRef } from "react";
 import { motion, useScroll, useTransform, AnimatePresence } from "framer-motion";
 import {
   Phone, ArrowRight, Star, Check, Shield, Truck, Home, Building2, Package,
-  Boxes, Map, Quote, Plus, Calendar, Clock, MessageCircle, Menu, X, Sparkles,
-  Trophy, Zap, ChevronLeft, ChevronRight, ChevronDown, Search, MapPin,
-  CheckCircle2, XCircle, AlertCircle, Award, Activity, Users, DollarSign, Wrench,
+  Boxes, Quote, Plus, Calendar, Clock, MessageCircle, Sparkles,
+  Zap, ChevronLeft, ChevronRight, Search, MapPin,
+  CheckCircle2, Activity, DollarSign, Wrench, X,
 } from "lucide-react";
 import Reveal from "@/components/Reveal";
+import Nav from "@/components/Nav";
 
 const PHONE = "0430 504 119";
 const PHONE_LINK = "tel:0430504119";
@@ -21,165 +22,10 @@ const PHONE_LINK = "tel:0430504119";
 // #0A0A0A — Near-black
 
 export default function MoushsPage() {
-  const [navOpen, setNavOpen] = useState(false);
-  const [scrolled, setScrolled] = useState(false);
-
-  useEffect(() => {
-    const onScroll = () => setScrolled(window.scrollY > 40);
-    window.addEventListener("scroll", onScroll);
-    return () => window.removeEventListener("scroll", onScroll);
-  }, []);
-
-  useEffect(() => {
-    document.body.style.overflow = navOpen ? "hidden" : "";
-  }, [navOpen]);
 
   return (
     <main className="overflow-x-hidden bg-white text-[#0A0A0A]">
-      {/* ============== NAV ============== */}
-      <nav
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white/90 backdrop-blur-xl border-b border-black/8 shadow-sm" : "bg-transparent"
-        }`}
-      >
-        <div className="max-w-[1320px] mx-auto px-4 sm:px-6 lg:px-8 h-[64px] sm:h-[72px] flex items-center justify-between">
-          <a href="#top" className="flex items-center gap-2.5 group">
-            <div className="relative w-10 h-10 sm:w-11 sm:h-11 rounded-lg overflow-hidden bg-white border border-black/10 shadow-sm">
-              {/* eslint-disable-next-line @next/next/no-img-element */}
-              <img src="/moush-logo.png" alt="Moush's Removals" className="w-full h-full object-cover" />
-            </div>
-            <div className="hidden xs:flex flex-col leading-tight">
-              <span className="font-display text-[16px] sm:text-[18px] font-black tracking-tight text-[#0B1F3A]">
-                Moush&apos;s
-              </span>
-              <span className="text-[9px] sm:text-[10px] font-mono uppercase tracking-[0.2em] text-[#E63946] font-bold">
-                Removals
-              </span>
-            </div>
-          </a>
-
-          <div className="hidden lg:flex items-center gap-1 text-[13px] font-bold uppercase tracking-wide">
-            {[
-              { href: "#estimate", label: "Quote" },
-              { href: "#services", label: "Services" },
-              { href: "#difference", label: "Why us" },
-              { href: "#timeline", label: "Process" },
-              { href: "#schedule", label: "Schedule" },
-              { href: "#reviews", label: "Reviews" },
-              { href: "#faq", label: "FAQ" },
-            ].map((l) => (
-              <a key={l.href} href={l.href} className="px-3 py-2 hover:text-[#E63946] transition-colors">
-                {l.label}
-              </a>
-            ))}
-          </div>
-
-          <div className="flex items-center gap-2 sm:gap-3">
-            <a
-              href={PHONE_LINK}
-              className="hidden md:inline-flex items-center gap-2 px-4 h-10 rounded-md border-2 border-[#0B1F3A] text-sm font-bold text-[#0B1F3A] hover:bg-[#0B1F3A] hover:text-white transition"
-            >
-              <Phone className="w-4 h-4" />
-              {PHONE}
-            </a>
-            <a
-              href="#estimate"
-              className="hidden sm:inline-flex items-center gap-1.5 bg-[#E63946] text-white px-4 h-10 rounded-md text-sm font-black uppercase tracking-wide hover:bg-[#c92a37] transition shadow-md"
-            >
-              Free quote
-              <ArrowRight className="w-3.5 h-3.5" />
-            </a>
-            <button
-              onClick={() => setNavOpen(!navOpen)}
-              className="lg:hidden w-11 h-11 grid place-items-center rounded-md border-2 border-[#0B1F3A]"
-              aria-label="Menu"
-            >
-              {navOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-            </button>
-          </div>
-        </div>
-
-        {/* Mobile menu */}
-        <AnimatePresence>
-          {navOpen && (
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              className="lg:hidden fixed inset-0 top-[64px] bg-[#0B1F3A] z-40 overflow-y-auto"
-            >
-              {/* Top section with logo + tagline */}
-              <div className="px-5 py-6 border-b border-white/10">
-                <div className="flex items-center gap-3 mb-3">
-                  <div className="w-12 h-12 rounded-lg overflow-hidden bg-white">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img src="/moush-logo.png" alt="Moush's Removals" className="w-full h-full object-cover" />
-                  </div>
-                  <div>
-                    <p className="font-display text-xl font-black" style={{ color: "white" }}>Moush&apos;s Removals</p>
-                    <p className="text-[10px] font-mono uppercase tracking-[0.2em] font-bold" style={{ color: "#FFD60A" }}>
-                      Est. 2017 · Melbourne
-                    </p>
-                  </div>
-                </div>
-                <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.7)" }}>
-                  Fixed-price removalists. No deposit. No surprises.
-                </p>
-              </div>
-
-              {/* Nav links */}
-              <div className="px-5 py-2">
-                {[
-                  { href: "#estimate", label: "Get a quote", icon: DollarSign },
-                  { href: "#services", label: "Services", icon: Truck },
-                  { href: "#difference", label: "Why us", icon: Sparkles },
-                  { href: "#timeline", label: "How we move", icon: Activity },
-                  { href: "#schedule", label: "Mel ↔ Syd schedule", icon: Calendar },
-                  { href: "#reviews", label: "Reviews", icon: Star },
-                  { href: "#areas", label: "Areas", icon: MapPin },
-                  { href: "#faq", label: "FAQ", icon: MessageCircle },
-                ].map((l) => (
-                  <a
-                    key={l.href}
-                    href={l.href}
-                    onClick={() => setNavOpen(false)}
-                    className="py-4 border-b border-white/10 flex items-center gap-3 group"
-                    style={{ color: "white" }}
-                  >
-                    <div className="w-10 h-10 rounded-lg bg-white/5 grid place-items-center group-hover:bg-[#E63946] transition">
-                      <l.icon className="w-4 h-4" style={{ color: "#FFD60A" }} />
-                    </div>
-                    <span className="font-display text-lg font-black flex-1">{l.label}</span>
-                    <ArrowRight className="w-5 h-5" style={{ color: "#E63946" }} />
-                  </a>
-                ))}
-              </div>
-
-              {/* CTAs */}
-              <div className="px-5 py-6 space-y-3">
-                <a
-                  href={PHONE_LINK}
-                  className="bg-[#E63946] py-4 rounded-md flex items-center justify-center gap-2 text-base uppercase tracking-wide font-black shadow-lg"
-                  style={{ color: "white" }}
-                >
-                  <Phone className="w-5 h-5" style={{ color: "white" }} />
-                  Call {PHONE}
-                </a>
-                <a
-                  href="#estimate"
-                  onClick={() => setNavOpen(false)}
-                  className="bg-[#FFD60A] py-4 rounded-md flex items-center justify-center gap-2 text-base uppercase tracking-wide font-black shadow-lg"
-                  style={{ color: "#0B1F3A" }}
-                >
-                  Get my fixed quote
-                  <ArrowRight className="w-5 h-5" style={{ color: "#0B1F3A" }} />
-                </a>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </nav>
+      <Nav />
 
       <Hero />
       <TickerBar />
@@ -220,7 +66,7 @@ function Hero() {
     <section
       ref={ref}
       id="top"
-      className="relative pt-[100px] sm:pt-[120px] lg:pt-[140px] pb-12 sm:pb-20 lg:pb-28 bg-white overflow-hidden"
+      className="relative pt-[88px] sm:pt-[110px] lg:pt-[130px] pb-10 sm:pb-16 lg:pb-24 bg-white overflow-hidden"
     >
       <div className="absolute top-0 right-0 w-[60vw] max-w-[700px] h-[60vw] max-h-[700px] rounded-full bg-[#E63946]/10 blur-[120px]" />
       <div className="absolute bottom-0 left-0 w-[50vw] max-w-[500px] h-[50vw] max-h-[500px] rounded-full bg-[#FFD60A]/15 blur-[100px]" />
@@ -297,9 +143,10 @@ function Hero() {
                 </a>
                 <a
                   href={PHONE_LINK}
-                  className="inline-flex items-center justify-center gap-2 bg-[#0B1F3A] text-white px-6 sm:px-8 h-14 rounded-md font-black uppercase tracking-wide text-sm sm:text-base hover:bg-[#0A0A0A] transition shadow-lg"
+                  style={{ color: "white" }}
+                  className="inline-flex items-center justify-center gap-2 bg-[#0B1F3A] hover:bg-[#0A0A0A] px-6 sm:px-8 h-14 rounded-md font-black uppercase tracking-wide text-sm sm:text-base transition shadow-lg"
                 >
-                  <Phone className="w-4 h-4" />
+                  <Phone className="w-4 h-4" style={{ color: "white" }} />
                   {PHONE}
                 </a>
               </div>
